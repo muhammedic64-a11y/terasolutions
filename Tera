@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tera Solutions | Küpeşte & Korkuluk Sistemleri</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    body{background:#f5f5f5;color:#111}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:16px}
+    header{position:sticky;top:0;z-index:10;background:#fffdd;border-bottom:1px solid #eee;backdrop-filter:blur(8px)}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
+    .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:20px}
+    .logo-circle{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 30% 20%,#fff,#0074ff);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px}
+    .btn-nav{padding:8px 14px;border-radius:999px;border:1px solid #0074ff;font-size:13px}
+    .btn-nav:hover{background:#0074ff;color:#fff}
+    .hero{padding:32px 0;background:linear-gradient(135deg,#fff,#eef4ff);border-bottom:1px solid #e5e5e5}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr)minmax(0,1fr);gap:24px;align-items:center}
+    .hero h1{font-size:28px;line-height:1.2;margin-bottom:12px}
+    .hero h1 span{color:#0074ff}
+    .hero p{font-size:14px;color:#444;margin-bottom:16px}
+    .hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+    .badge{font-size:11px;padding:6px 10px;border-radius:999px;background:#fff;border:1px solid #e0e0e0}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .btn-primary{background:#0074ff;color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;border:none;cursor:pointer}
+    .btn-primary:hover{filter:brightness(.9)}
+    .btn-ghost{padding:10px 16px;border-radius:999px;font-size:13px;border:1px dashed #999;background:transparent;cursor:pointer}
+    .hero-note{margin-top:8px;font-size:11px;color:#666}
+    .hero-img{border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.08);border:1px solid #ddd;background:#000}
+    .hero-img-inner{aspect-ratio:4/3;background-image:url('https://images.pexels.com/photos/37347/office-staircase-modern-stairs-indoors-37347.jpeg?auto=compress&cs=tinysrgb&w=1200');background-size:cover;background-position:center}
+    .hero-img-label{padding:8px 10px;font-size:11px;color:#f5f5f5;display:flex;justify-content:space-between}
+    section{padding:32px 0}
+    .section-title{font-size:20px;margin-bottom:6px}
+    .section-sub{font-size:13px;color:#666;margin-bottom:18px}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .card{background:#fff;border-radius:12px;padding:14px;border:1px solid #eee;box-shadow:0 4px 15px rgba(0,0,0,.02)}
+    .card h3{font-size:15px;margin-bottom:4px}
+    .card p{font-size:13px;color:#555;margin-bottom:4px}
+    .card-tag{font-size:11px;color:#0074ff}
+    .offer{background:#0b1530;color:#fff;border-radius:16px;padding:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:16px}
+    .offer h3{font-size:17px;margin-bottom:4px}
+    .offer p{font-size:13px;opacity:.9}
+    .offer-code{font-size:13px;font-weight:600}
+    .btn-offer{background:#fff;color:#0b1530;padding:9px 14px;border-radius:999px;border:none;font-size:13px;cursor:pointer}
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    .gallery-item{border-radius:10px;overflow:hidden;border:1px solid:#ddd;aspect-ratio:4/3;background-size:cover;background-position:center}
+    .gallery-1{background-image:url('https://images.pexels.com/photos/37347/office-staircase-modern-stairs-indoors-37347.jpeg?auto=compress&cs=tinysrgb&w=800')}
+    .gallery-2{background-image:url('https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=800')}
+    .gallery-3{background-image:url('https://images.pexels.com/photos/209761/pexels-photo-209761.jpeg?auto=compress&cs=tinysrgb&w=800')}
+    .contact-grid{display:grid;grid-template-columns:minmax(0,1.1fr)minmax(0,1fr);gap:16px}
+    .contact-card{background:#fff;border-radius:12px;padding:14px;border:1px solid:#eee}
+    .contact-card h3{font-size:16px;margin-bottom:6px}
+    .contact-row{font-size:13px;margin-bottom:5px}
+    .contact-row span{font-weight:600}
+    .contact-form label{display:block;font-size:12px;margin-bottom:3px}
+    .contact-form input,.contact-form textarea{width:100%;padding:7px 9px;border-radius:8px;border:1px solid:#ccc;font-size:13px;margin-bottom:8px}
+    .contact-form textarea{min-height:70px;resize:vertical}
+    .btn-form{background:#0074ff;color:#fff;border:none;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer}
+    footer{padding:16px 0 24px;border-top:1px solid:#e1e1e1;background:#fff;margin-top:24px}
+    .footer-inner{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;flex-wrap:wrap;justify-content:space-between;font-size:12px;color:#666;gap:8px}
+    .footer-inner a{color:#0074ff}
+    @media(max-width:830px){
+      .hero-grid,.cards,.gallery-grid,.contact-grid{grid-template-columns:minmax(0,1fr)}
+      .hero h1{font-size:24px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="logo">
+      <div class="logo-circle">T</div><div>Tera Solutions</div>
+    </div>
+    <a href="#iletisim" class="btn-nav">Teklif Al</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Modern <span>küpeşte & korkuluk</span><br>çözümleriyle güvenli yaşam alanları.</h1>
+        <p>Tera Solutions, İstanbul geneli merdiven, balkon, teras ve dış cepheler için paslanmaz çelik ve camlı korkuluk sistemleri üretir ve montajını yapar.</p>
+        <div class="hero-badges">
+          <div class="badge">Ücretsiz keşif</div>
+          <div class="badge">Hızlı montaj</div>
+          <div class="badge">1. sınıf malzeme</div>
+          <div class="badge">Profesyonel işçilik</div>
+        </div>
+        <div class="hero-actions">
+          <a href="https://wa.me/905342140057" class="btn-primary">WhatsApp ile Teklif Al</a>
+          <a href="#hizmetler" class="btn-ghost">Hizmetlerimizi incele</a>
+        </div>
+        <div class="hero-note">* İstanbul içi ücretsiz keşif ve ölçü. Aynı gün dönüş garantisi.</div>
+      </div>
+      <div class="hero-img">
+        <div class="hero-img-inner"></div>
+        <div class="hero-img-label">
+          <span>Camlı merdiven korkuluk uygulaması</span>
+          <span>Tera Solutions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hizmetler">
+    <div class="container">
+      <h2 class="section-title">Hizmetlerimiz</h2>
+      <p class="section-sub">Ölçüye özel üretim ve profesyonel montaj ile uzun ömürlü küpeşte & korkuluk çözümleri sunuyoruz.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Paslanmaz Çelik Küpeşte</h3>
+          <p>Merdiven, balkon ve teraslar için dayanıklı ve şık paslanmaz korkuluk sistemleri.</p>
+          <div class="card-tag">304 / 316 paslanmaz çelik seçenekleri</div>
+        </div>
+        <div class="card">
+          <h3>Camlı Korkuluk Sistemleri</h3>
+          <p>Temperli camlarla modern ve ferah mekanlar.</p>
+          <div class="card-tag">Balkon & merdiven cam korkuluk</div>
+        </div>
+        <div class="card">
+          <h3>Özel Tasarım Çözümler</h3>
+          <p>Projeye özel ölçülendirme ve model seçenekleri.</p>
+          <div class="card-tag">İsteğe göre renk ve model</div>
+        </div>
+      </div>
+
+      <div class="offer">
+        <div>
+          <h3>Online randevuya özel indirim!</h3>
+          <p>Bu site üzerinden bize ulaşan müşterilere ücretsiz keşif + özel fiyat avantajı sunuyoruz.</p>
+          <div class="offer-code">Kupon Kodu: <strong>TERA10</strong></div>
+        </div>
+        <a href="https://wa.me/905342140057" class="btn-offer">WhatsApp'tan Yaz</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="container">
+      <h2 class="section-title">Uygulama Görselleri</h2>
+    </div>
+    <div class="container gallery-grid">
+      <div class="gallery-item gallery-1"></div>
+      <div class="gallery-item gallery-2"></div>
+      <div class="gallery-item gallery-3"></div>
+    </div>
+  </section>
+
+  <section id="iletisim">
+    <div class="container">
+      <h2 class="section-title">İletişim & Keşif Talebi</h2>
+      <p class="section-sub">Projeniz için fiyat almak veya keşif talep etmek için aşağıdaki bilgilerden bize ulaşabilirsiniz.</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>İletişim Bilgileri</h3>
+          <div class="contact-row"><span>Firma:</span> Tera Solutions Küpeşte & Korkuluk</div>
+          <div class="contact-row"><span>Telefon:</span> 0 (534) 214 00 57</div>
+          <div class="contact-row"><span>Adres:</span> İstanbul / Sancaktepe ve çevresi</div>
+          <div class="contact-row"><span>Instagram:</span> @terasolutionn</div>
+          <div class="contact-row"><span>Hizmet Bölgesi:</span> İstanbul geneli</div>
+        </div>
+        <div class="contact-card">
+          <h3>WhatsApp ile Hızlı Teklif</h3>
+          <p style="font-size:13px;margin-bottom:8px;">Ölçü, fotoğraf veya adres bilgilerinizi WhatsApp üzerinden göndererek hızlıca fiyat alabilirsiniz.</p>
+          <a href="https://wa.me/905342140057" class="btn-primary" style="display:inline-block;margin-top:4px;">WhatsApp'a Geç</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© <span id="yil"></span> Tera Solutions. Tüm hakları saklıdır.</div>
+    <div><a href="#hizmetler">Hizmetler</a> · <a href="#iletisim">İletişim</a></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("yil").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
